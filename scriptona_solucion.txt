@@ -1,0 +1,171 @@
+cd Escritorio # ingresar a un directorio
+
+git clone  https://github.com/WomenBioinfoDataScLA/proyecto_final_pre-camp_wbds_la-YanelElinaBernardi  
+
+ls # listar el contenido del directorio actual
+proyecto_final_pre-camp_wbds_la-YanelElinaBernardi  WBDS_LA_Camp 
+
+cd proyecto_final_pre-camp_wbds_la-YanelElinaBernardi/ 
+
+ls 
+LICENSE  paso_11  paso_20  paso_4   paso_48  paso_8   README.md
+paso_1   paso_12  paso_24  paso_42  paso_5   paso_9   welcome.sh
+paso_10  paso_2   paso_3   paso_44  paso_7   paso_91
+
+./welcome.sh
+¡Te damos la bienvenida al bashathon, lbd!
+El objetivo es encontrar la frase secreta. Seguí las instrucciones que aparezcan en pantalla.
+Entrá al directorio paso_2 y seguí las instrucciones del archivo instrucciones.txt
+
+cd paso_2
+
+ls
+instrucciones.txt
+
+cat instrucciones.txt # para imprimir generalemente el contenido de un archivo
+¡Esta fue fácil!
+
+INSTRUCCIÓN: Ahora andá al directorio paso_5 y seguí las instrucciones.
+¡Pero cuidado! Ese archivo es muy grande, así que leé sólo las primeras dos líneas
+
+cd .. # cambiar de directorio
+
+cd paso_5
+
+ls
+instrucciones.txt
+
+cat instrucciones.txt 
+¡Hagamos las cosas más interesantes!
+INSTRUCCIÓN: Ahora andá al directorio paso_10 y seguí las instrucciones
+
+cd ..
+
+cd paso_10
+
+ls
+instrucciones.txt
+
+cat instrucciones.txt 
+¡Hora de usar la web!
+
+INSTRUCCIÓN: Descargá la licencia GPLv3 de https://www.gnu.org/licenses/gpl-3.0.txt
+Contá cuantas veces aparece la palabra freedom. Con ese número, andá al paso correspondiente y seguí las instrucciones.
+
+wget https://www.gnu.org/licenses/gpl-3.0.txt
+
+ls
+gpl-3.0.txt instrucciones.txt
+
+grep "freedom" gpl-3.0.txt | wc -l
+8
+
+cd ..
+
+cd paso_8
+
+ls
+instrucciones.txt
+
+cat instrucciones.txt 
+
+¡Muy bien!
+Ahora veamos un contenido un poco más bio...
+
+INSTRUCCIÓN: Descargá la secuencia de la siguiente proteína https://www.rcsb.org/fasta/entry/7PND y averiguá cual es contenido de Lisinas (K) que contiene,
+y con ese número, andá al directorio correspondiente y seguí las instrucciones.
+
+wget https://www.rcsb.org/fasta/entry/7PND
+
+ls
+7PND  instrucciones.txt
+
+cat 7PND 
+>7PND_1|Chains A, B|BFT-3|Bacteroides fragilis (817)
+MGSSHHHHHHSSGENLYFQGAMACSNEADSLTTSIDAPVTASIDLQSVSYTDLATQLNDVSDFGKMIILKDNGFNRQVHVSMDKRTKIQLDNENVRLFNGRDKDSTNFILGDEFAVLRFYRNGESISYIAYKEAQMMNEIAEFYAAPFKKTRAINEKEAFECIYDSRTRSAGKYPVSVKINVDKAKKILNLPECDYINDYIKTPQVPHGITESQTRAVPSEPKTVYVICLRENGSTVYPNEVSAQMQDAANSVYAVHGLKRYVNLHFVLYTTEYACPSGNADEGLDGFTASLKANPKAEGYDDQIYFLIRWGTWDNNILGISWLNSYNVNTASDFKASGMSTTQLMYPGVMAHELGHILGANHADDPKDLMYSKYTGYLFHLSEKNMDIIAKNLGWEIADGD
+
+grep -o "K" 7PND | wc -l 
+24
+
+cd ..
+
+cd paso_24
+
+ls
+instrucciones.txt
+
+cat instrucciones.txt 
+¡Muy bien! Ahora pongamos algo de condimento al juego.
+
+INSTRUCCIONES: descargá el archivo https://www.alphafold.ebi.ac.uk/entry/F4HVG8 y averiguá cuánto pesa para saber el número del siguiente paso (usa el primer dígito)
+
+wget https://www.alphafold.ebi.ac.uk/entry/F4HVG8
+
+ls
+F4HVG8  instrucciones.txt
+
+ls -la F4HVG8 
+
+-rw-rw-r-- 1 lbd lbd 7504 nov  1 12:27 F4HVG8
+
+cd ..
+
+cd paso_7
+
+ls
+instrucciones.txt  sequences.fasta  sequences_II.fasta
+
+cat instrucciones.txt 
+¡Ya falta poco! Vamos a jugar un poco más con los archivos comunes en bioinformática
+
+INSTRUCCIONES: Contá cuántas secuencias de 'Homo sapines' tiene en total todos los archivos .fasta de la carpeta y andá al directorio que se corresponda con ese número para saber cómo seguir
+
+grep -c "Homo sapines" sequences.fasta 
+0
+
+Homo sapines no se va a encontrar porque no esta en el archivo corregi la palabra de busqueda a Homo sapiens
+
+grep -c "Homo sapiens" sequences.fasta 
+6
+grep -c "Homo sapiens" sequences_II.fasta 
+3
+
+cd ..
+
+cd paso_9
+
+ls
+arch1.doc  arch2.doc  arch_III.md  arch_II.md  arch_I.md  arch_IV.md  arch_V.md  doc1.doc  instrucciones.txt
+
+cat instrucciones.txt 
+¡Buen trabajo! 
+
+INSTRUCCIONES: Para encontrar la frase secreta tendrás que extraer el texto de todxs los archivos '.md'. 
+Redireccioná lo que encontrás a un archivo de nombre `posta_final.txt`
+
+more arch1.doc 
+Esto no va
+more arch2.doc 
+Esto no debería ir! =(
+more arch_I.md 
+“La libertad se 
+more arch_II.md 
+aprende ejerciéndola”
+more arch_III.md 
+Clara Campoamor
+more arch_IV.md 
+Gracias por sumarte
+more arch_V.md 
+a este desafío 🤗
+more doc1.doc 
+Esto no va!! =(
+
+cat arch_I.md arch_II.md  arch_III.md arch_IV.md arch_V.md > posta_final.txt
+
+ls
+arch1.doc  arch2.doc  arch_III.md  arch_II.md  arch_I.md  arch_IV.md  arch_V.md  doc1.doc  instrucciones.txt  posta_final.txt
+
+cat posta_final.txt 
+“La libertad se aprende ejerciéndola”Clara Campoamor
+Gracias por sumarte
+a este desafío 🤗
